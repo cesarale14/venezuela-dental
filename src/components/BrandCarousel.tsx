@@ -4,18 +4,18 @@ import { useLanguage } from "@/hooks/useLanguage";
 import SectionHeading from "./SectionHeading";
 
 const brands = [
-  "3M Oral Care",
-  "Dentsply Sirona",
-  "Kerr Dental",
-  "Ivoclar Vivadent",
-  "Ultradent",
-  "GC America",
-  "Hu-Friedy",
-  "Colgate Professional",
-  "Zhermack",
-  "NSK",
-  "Woodpecker",
-  "Maquira",
+  { name: "3M Oral Care", logo: "/brands/3m.svg" },
+  { name: "Dentsply Sirona", logo: "/brands/dentsply.svg" },
+  { name: "Kerr Dental", logo: "/brands/kerr.svg" },
+  { name: "Ivoclar Vivadent", logo: "/brands/ivoclar.svg" },
+  { name: "Ultradent", logo: "/brands/ultradent.svg" },
+  { name: "GC America", logo: "/brands/gc-america.svg" },
+  { name: "Hu-Friedy", logo: "/brands/hu-friedy.svg" },
+  { name: "Colgate Professional", logo: "/brands/colgate.svg" },
+  { name: "Zhermack", logo: "/brands/zhermack.svg" },
+  { name: "NSK", logo: "/brands/nsk.svg" },
+  { name: "Woodpecker", logo: "/brands/woodpecker.svg" },
+  { name: "Maquira", logo: "/brands/maquira.svg" },
 ];
 
 export default function BrandCarousel() {
@@ -35,13 +35,15 @@ export default function BrandCarousel() {
         <div className="flex animate-marquee gap-6">
           {[...brands, ...brands].map((brand, i) => (
             <div
-              key={`${brand}-${i}`}
-              className="flex h-16 flex-shrink-0 items-center justify-center rounded-lg border border-gray-200 bg-white px-8"
-              style={{ minWidth: "160px" }}
+              key={`${brand.name}-${i}`}
+              className="flex h-20 flex-shrink-0 items-center justify-center rounded-lg border border-gray-200 bg-white px-6"
+              style={{ minWidth: "180px" }}
             >
-              <span className="whitespace-nowrap text-sm font-semibold text-gray-600">
-                {brand}
-              </span>
+              <img
+                src={brand.logo}
+                alt={brand.name}
+                className="h-10 w-auto max-w-[140px] object-contain"
+              />
             </div>
           ))}
         </div>
