@@ -1,0 +1,30 @@
+@import "tailwindcss";
+
+@theme inline {
+  --color-blue-DEFAULT: #2191b9;
+  --color-blue-light: #3fb8e0;
+  --color-blue-lighter: #e8f6fb;
+  --color-blue-dark: #1a7494;
+  --color-blue-darker: #135a72;
+  --color-green-whatsapp: #25D366;
+  --font-sans: "Plus Jakarta Sans", sans-serif;
+}
+
+body {
+  font-family: var(--font-sans);
+  background: #ffffff;
+  color: #1f2937;
+}
+
+@keyframes pulse-whatsapp {
+  0%, 100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.05);
+  }
+}
+
+.animate-pulse-whatsapp {
+  animation: pulse-whatsapp 3s ease-in-out infinite;
+}
