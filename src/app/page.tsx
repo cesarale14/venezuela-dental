@@ -19,6 +19,7 @@ import { products } from "@/lib/products";
 import ProductCard from "@/components/ProductCard";
 import CategoryCard from "@/components/CategoryCard";
 import SectionHeading from "@/components/SectionHeading";
+import BrandCarousel from "@/components/BrandCarousel";
 import GoogleMap from "@/components/GoogleMap";
 
 const fadeIn = {
@@ -36,17 +37,19 @@ export default function Home() {
     <>
       {/* Hero */}
       <section className="bg-gradient-to-b from-blue-lighter to-white">
-        <div className="mx-auto max-w-7xl px-4 py-16 sm:px-6 md:py-24 lg:px-8">
+        <div className="mx-auto max-w-7xl px-4 py-20 sm:px-6 md:py-28 lg:px-8">
           <div className="grid items-center gap-12 md:grid-cols-2">
             <motion.div {...fadeIn}>
-              <h1 className="text-3xl font-extrabold leading-tight text-gray-900 md:text-4xl lg:text-5xl">
+              <h1 className="text-4xl font-extrabold leading-tight text-gray-900 md:text-5xl lg:text-[clamp(36px,5vw,56px)]">
                 {t.hero.title}
               </h1>
-              <p className="mt-6 text-lg text-gray-500">{t.hero.subtitle}</p>
-              <div className="mt-8 flex flex-wrap gap-4">
+              <p className="mt-6 text-lg leading-relaxed text-gray-500">
+                {t.hero.subtitle}
+              </p>
+              <div className="mt-10 flex flex-wrap gap-4">
                 <Link
                   href="/catalogo"
-                  className="inline-flex items-center rounded-lg bg-blue-DEFAULT px-6 py-3 text-sm font-semibold text-white transition-colors hover:bg-blue-dark"
+                  className="inline-flex min-h-[48px] items-center rounded-lg bg-blue-DEFAULT px-7 text-sm font-semibold text-white transition-colors hover:bg-blue-dark"
                 >
                   {t.hero.ctaCatalog}
                 </Link>
@@ -54,7 +57,7 @@ export default function Home() {
                   href={getWhatsAppUrl()}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center gap-2 rounded-lg bg-green-whatsapp px-6 py-3 text-sm font-semibold text-white transition-colors hover:brightness-110"
+                  className="inline-flex min-h-[48px] items-center gap-2 rounded-lg bg-green-whatsapp px-7 text-sm font-semibold text-white transition-colors hover:brightness-110"
                 >
                   <MessageCircle size={18} />
                   {t.hero.ctaWhatsApp}
@@ -66,12 +69,12 @@ export default function Home() {
             <motion.div
               {...fadeIn}
               transition={{ duration: 0.5, delay: 0.2 }}
-              className="flex h-64 items-center justify-center rounded-2xl bg-blue-lighter md:h-80"
+              className="flex h-72 items-center justify-center rounded-2xl bg-blue-lighter md:h-96"
             >
               <img
                 src="/logo.svg"
                 alt="Venezuela Dental"
-                className="h-60 w-auto opacity-60 md:h-72"
+                className="h-48 w-auto opacity-50 md:h-60"
               />
             </motion.div>
           </div>
@@ -80,17 +83,17 @@ export default function Home() {
           <motion.div
             {...fadeIn}
             transition={{ duration: 0.5, delay: 0.3 }}
-            className="mt-16 grid grid-cols-2 gap-6 md:grid-cols-4"
+            className="mt-20 grid grid-cols-2 gap-4 md:grid-cols-4"
           >
             {[
               { icon: Truck, label: t.trustBadges.shipping },
               { icon: Users, label: t.trustBadges.personalized },
               { icon: Award, label: t.trustBadges.brands },
               { icon: ShieldCheck, label: t.trustBadges.pricing },
-            ].map((badge) => (
+            ].map((badge, i) => (
               <div
                 key={badge.label}
-                className="flex items-center gap-3 rounded-lg bg-white p-4 shadow-sm"
+                className="flex items-center gap-3 rounded-xl bg-white p-5 shadow-[0_1px_3px_rgba(0,0,0,0.05)]"
               >
                 <badge.icon
                   size={24}
@@ -107,18 +110,18 @@ export default function Home() {
       </section>
 
       {/* Featured Products */}
-      <section className="bg-white py-16 md:py-24">
+      <section className="bg-white py-20 md:py-24">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <SectionHeading title={t.featured.title} />
-          <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-            {featuredProducts.map((product) => (
+          <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+            {featuredProducts.slice(0, 8).map((product) => (
               <ProductCard key={product.id} product={product} />
             ))}
           </div>
-          <div className="mt-10 text-center">
+          <div className="mt-12 text-center">
             <Link
               href="/catalogo"
-              className="text-sm font-semibold text-blue-DEFAULT transition-colors hover:text-blue-dark"
+              className="inline-flex min-h-[48px] items-center rounded-lg border border-blue-DEFAULT px-7 text-sm font-semibold text-blue-DEFAULT transition-colors hover:bg-blue-DEFAULT hover:text-white"
             >
               {t.featured.viewAll} &rarr;
             </Link>
@@ -127,10 +130,10 @@ export default function Home() {
       </section>
 
       {/* Categories */}
-      <section className="bg-gray-50 py-16 md:py-24">
+      <section className="bg-gray-50 py-20 md:py-24">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <SectionHeading title={t.categories.title} />
-          <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+          <div className="grid grid-cols-2 gap-5 sm:grid-cols-3 lg:grid-cols-4">
             {categories.map((cat) => (
               <CategoryCard key={cat.id} category={cat} />
             ))}
@@ -139,7 +142,7 @@ export default function Home() {
       </section>
 
       {/* Why Choose Us */}
-      <section className="bg-white py-16 md:py-24">
+      <section className="bg-blue-lighter py-20 md:py-24">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <SectionHeading title={t.whyUs.title} />
           <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-4">
@@ -167,7 +170,7 @@ export default function Home() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: i * 0.1 }}
-                className="text-center"
+                className="rounded-xl bg-white p-6 text-center shadow-[0_1px_3px_rgba(0,0,0,0.05)]"
               >
                 <div className="mx-auto mb-4 flex h-14 w-14 items-center justify-center rounded-full bg-blue-lighter">
                   <item.icon
@@ -179,34 +182,37 @@ export default function Home() {
                 <h3 className="mb-2 text-base font-bold text-gray-900">
                   {item.title}
                 </h3>
-                <p className="text-sm text-gray-500">{item.desc}</p>
+                <p className="text-sm leading-relaxed text-gray-500">{item.desc}</p>
               </motion.div>
             ))}
           </div>
         </div>
       </section>
 
+      {/* Brand Carousel */}
+      <BrandCarousel />
+
       {/* CTA Banner */}
-      <section className="bg-blue-DEFAULT py-16">
+      <section className="bg-gradient-to-r from-blue-DEFAULT to-blue-dark py-20">
         <div className="mx-auto max-w-7xl px-4 text-center sm:px-6 lg:px-8">
           <motion.div {...fadeIn}>
-            <h2 className="text-2xl font-bold text-white md:text-3xl">
+            <h2 className="text-2xl font-bold text-white md:text-3xl lg:text-[clamp(28px,3.5vw,42px)]">
               {t.ctaBanner.title}
             </h2>
-            <p className="mt-3 text-blue-lighter">{t.ctaBanner.subtitle}</p>
-            <div className="mt-8 flex flex-wrap items-center justify-center gap-4">
+            <p className="mt-4 text-lg text-blue-lighter">{t.ctaBanner.subtitle}</p>
+            <div className="mt-10 flex flex-wrap items-center justify-center gap-4">
               <a
                 href={getWhatsAppUrl()}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 rounded-lg bg-green-whatsapp px-6 py-3 text-sm font-semibold text-white transition-colors hover:brightness-110"
+                className="inline-flex min-h-[48px] items-center gap-2 rounded-lg bg-green-whatsapp px-7 text-sm font-semibold text-white transition-colors hover:brightness-110"
               >
                 <MessageCircle size={18} />
                 {t.ctaBanner.whatsapp}
               </a>
               <a
                 href={`tel:${CONTACT.phones[0].number.replace(/\s|-/g, "")}`}
-                className="inline-flex items-center gap-2 rounded-lg border border-white/30 bg-white/10 px-6 py-3 text-sm font-semibold text-white transition-colors hover:bg-white/20"
+                className="inline-flex min-h-[48px] items-center gap-2 rounded-lg border border-white/30 bg-white/10 px-7 text-sm font-semibold text-white transition-colors hover:bg-white/20"
               >
                 <Phone size={18} />
                 {t.ctaBanner.call}
@@ -217,7 +223,7 @@ export default function Home() {
       </section>
 
       {/* Location */}
-      <section className="bg-gray-50 py-16 md:py-24">
+      <section className="bg-white py-20 md:py-24">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <SectionHeading title={t.location.title} />
           <div className="grid items-start gap-8 md:grid-cols-2">
@@ -225,17 +231,17 @@ export default function Home() {
               <GoogleMap />
             </motion.div>
             <motion.div {...fadeIn} transition={{ duration: 0.5, delay: 0.2 }}>
-              <div className="rounded-xl border border-gray-200 bg-white p-6">
-                <div className="mb-4 flex items-start gap-3">
+              <div className="rounded-xl border border-gray-200 bg-white p-6 shadow-[0_1px_3px_rgba(0,0,0,0.05)]">
+                <div className="mb-5 flex items-start gap-3">
                   <MapPin
                     size={20}
                     className="mt-0.5 flex-shrink-0 text-blue-DEFAULT"
                   />
-                  <p className="text-sm text-gray-600">
+                  <p className="text-sm leading-relaxed text-gray-600">
                     {CONTACT.address.full}
                   </p>
                 </div>
-                <div className="mb-4 flex items-start gap-3">
+                <div className="mb-5 flex items-start gap-3">
                   <Clock
                     size={20}
                     className="mt-0.5 flex-shrink-0 text-blue-DEFAULT"
@@ -252,7 +258,7 @@ export default function Home() {
                 {CONTACT.phones.map((phone) => (
                   <div
                     key={phone.number}
-                    className="mb-2 flex items-center gap-3"
+                    className="mb-3 flex items-center gap-3"
                   >
                     <Phone
                       size={20}
@@ -270,7 +276,7 @@ export default function Home() {
                   href={CONTACT.address.googleMapsUrl}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="mt-4 inline-flex items-center gap-2 rounded-lg bg-blue-DEFAULT px-5 py-2.5 text-sm font-medium text-white transition-colors hover:bg-blue-dark"
+                  className="mt-5 inline-flex min-h-[48px] items-center gap-2 rounded-lg bg-blue-DEFAULT px-6 text-sm font-medium text-white transition-colors hover:bg-blue-dark"
                 >
                   <MapPin size={16} />
                   {t.location.directions}

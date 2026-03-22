@@ -29,17 +29,15 @@ export default function ServiciosPage() {
 
   return (
     <>
-      {/* Header */}
-      <section className="bg-blue-lighter py-12 md:py-16">
+      <section className="bg-blue-lighter py-14 md:py-20">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <SectionHeading title={t.services.title} />
         </div>
       </section>
 
-      {/* Services grid */}
-      <section className="bg-white py-16 md:py-24">
+      <section className="bg-white py-20 md:py-24">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
+          <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
             {services.map((service, i) => (
               <motion.div
                 key={service.title}
@@ -47,27 +45,20 @@ export default function ServiciosPage() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: i * 0.1 }}
-                className="rounded-xl border border-gray-200 bg-white p-6 transition-all duration-300 hover:shadow-lg"
+                className="rounded-xl border border-gray-200 bg-white p-7 shadow-[0_1px_3px_rgba(0,0,0,0.05)] transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_8px_24px_rgba(0,0,0,0.08)]"
               >
-                <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-full bg-blue-lighter">
-                  <service.icon
-                    size={24}
-                    className="text-blue-DEFAULT"
-                    strokeWidth={1.5}
-                  />
+                <div className="mb-5 flex h-14 w-14 items-center justify-center rounded-full bg-blue-lighter">
+                  <service.icon size={24} className="text-blue-DEFAULT" strokeWidth={1.5} />
                 </div>
-                <h3 className="mb-2 text-lg font-bold text-gray-900">
-                  {service.title}
-                </h3>
-                <p className="text-sm text-gray-500">{service.desc}</p>
+                <h3 className="mb-2 text-lg font-bold text-gray-900">{service.title}</h3>
+                <p className="text-sm leading-relaxed text-gray-500">{service.desc}</p>
               </motion.div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* Bottom CTA */}
-      <section className="bg-blue-DEFAULT py-16">
+      <section className="bg-gradient-to-r from-blue-DEFAULT to-blue-dark py-20">
         <div className="mx-auto max-w-7xl px-4 text-center sm:px-6 lg:px-8">
           <motion.div
             initial={{ opacity: 0, y: 16 }}
@@ -75,22 +66,20 @@ export default function ServiciosPage() {
             viewport={{ once: true }}
             transition={{ duration: 0.5 }}
           >
-            <h2 className="text-2xl font-bold text-white md:text-3xl">
-              {t.services.cta}
-            </h2>
-            <div className="mt-8 flex flex-wrap items-center justify-center gap-4">
+            <h2 className="text-2xl font-bold text-white md:text-3xl">{t.services.cta}</h2>
+            <div className="mt-10 flex flex-wrap items-center justify-center gap-4">
               <a
                 href={getWhatsAppUrl()}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 rounded-lg bg-green-whatsapp px-6 py-3 text-sm font-semibold text-white transition-colors hover:brightness-110"
+                className="inline-flex min-h-[48px] items-center gap-2 rounded-lg bg-green-whatsapp px-7 text-sm font-semibold text-white transition-colors hover:brightness-110"
               >
                 <MessageCircle size={18} />
                 WhatsApp
               </a>
               <a
                 href={`tel:${CONTACT.phones[0].number.replace(/\s|-/g, "")}`}
-                className="inline-flex items-center gap-2 rounded-lg border border-white/30 bg-white/10 px-6 py-3 text-sm font-semibold text-white transition-colors hover:bg-white/20"
+                className="inline-flex min-h-[48px] items-center gap-2 rounded-lg border border-white/30 bg-white/10 px-7 text-sm font-semibold text-white transition-colors hover:bg-white/20"
               >
                 <Phone size={18} />
                 {CONTACT.phones[0].number}

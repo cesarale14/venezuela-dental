@@ -2,10 +2,16 @@ const translations = {
   es: {
     nav: {
       home: "Inicio",
+      products: "Productos",
       catalog: "Cat\u00e1logo",
       about: "Nosotros",
       services: "Servicios",
       contact: "Contacto",
+      viewAllCatalog: "Ver todo el cat\u00e1logo",
+    },
+    brands: {
+      title: "Marcas que distribuimos",
+      subtitle: "Trabajamos con las principales marcas del mercado odontol\u00f3gico",
     },
     hero: {
       title: "Su proveedor de confianza en suministros odontol\u00f3gicos",
@@ -65,6 +71,8 @@ const translations = {
       search: "Buscar productos...",
       inquire: "Consultar disponibilidad",
       notFound: "\u00bfNo encuentra lo que busca? Cont\u00e1ctenos directamente",
+      showing: "Mostrando",
+      productsLabel: "productos",
       noResults: "No se encontraron productos con ese criterio de b\u00fasqueda.",
     },
     about: {
@@ -168,10 +176,16 @@ const translations = {
   en: {
     nav: {
       home: "Home",
+      products: "Products",
       catalog: "Catalog",
       about: "About Us",
       services: "Services",
       contact: "Contact",
+      viewAllCatalog: "View full catalog",
+    },
+    brands: {
+      title: "Brands We Distribute",
+      subtitle: "We work with the leading brands in the dental market",
     },
     hero: {
       title: "Your trusted dental supply provider",
@@ -230,6 +244,8 @@ const translations = {
       search: "Search products...",
       inquire: "Check availability",
       notFound: "Can't find what you're looking for? Contact us directly",
+      showing: "Showing",
+      productsLabel: "products",
       noResults: "No products found matching your search criteria.",
     },
     about: {
