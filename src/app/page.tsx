@@ -11,9 +11,6 @@ import {
   Users,
   Phone,
   MapPin,
-  Stethoscope,
-  Microscope,
-  Monitor,
 } from "lucide-react";
 import { useLanguage } from "@/hooks/useLanguage";
 import { CONTACT, getWhatsAppUrl } from "@/lib/constants";
@@ -113,34 +110,38 @@ export default function Home() {
       </section>
 
       {/* Product Lines — Young Innovations style */}
-      <section className="bg-[#f0f9ff] py-20 md:py-28">
+      <section className="relative bg-[#ebf5fe] py-16 md:py-20">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <SectionHeading title={t.productLines.title} />
-          <div className="mt-20 grid gap-10 sm:grid-cols-2 lg:grid-cols-3">
+          <motion.h2
+            {...fadeIn}
+            className="text-center text-3xl font-light text-[#001480] md:text-4xl"
+          >
+            {t.productLines.title}
+          </motion.h2>
+
+          {/* Cards container — flex row like Young Innovations .wrap */}
+          <div
+            className="mt-10 flex flex-wrap justify-center gap-y-0 lg:flex-nowrap"
+            style={{ margin: "40px -20px 0" }}
+          >
             {[
               {
-                icon: Stethoscope,
                 image: "/brands/dental-tools.png",
-                color: "bg-[#7c3aed]",
-                hoverColor: "group-hover:bg-[#8b5cf6]",
+                gradient: "radial-gradient(circle, #d8b8ff 0%, #773dbd 94%)",
                 title: t.productLines.line1.title,
                 description: t.productLines.line1.description,
                 href: "/catalogo?categoria=preventiva",
               },
               {
-                icon: Microscope,
                 image: "/brands/specialist-hand.jpg",
-                color: "bg-[#ec4899]",
-                hoverColor: "group-hover:bg-[#f472b6]",
+                gradient: "radial-gradient(circle, #ffb0ca 0%, #dc1e5c 100%)",
                 title: t.productLines.line2.title,
                 description: t.productLines.line2.description,
                 href: "/catalogo?categoria=endodoncia",
               },
               {
-                icon: Monitor,
                 image: "/brands/implant-tech.png",
-                color: "bg-[#14b8a6]",
-                hoverColor: "group-hover:bg-[#2dd4bf]",
+                gradient: "radial-gradient(circle, #a4ffe5 0%, #1eb389 94%)",
                 title: t.productLines.line3.title,
                 description: t.productLines.line3.description,
                 href: "/catalogo?categoria=equipos",
@@ -148,43 +149,80 @@ export default function Home() {
             ].map((card, i) => (
               <motion.div
                 key={card.title}
-                initial={{ opacity: 0, y: 32 }}
+                initial={{ opacity: 0, y: 40 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: i * 0.12 }}
-                className="pt-12"
+                className="w-full px-5 sm:w-1/2 lg:w-1/3"
+                style={{ marginTop: "120px" }}
               >
-                <Link href={card.href} className="group block h-full">
-                  <div className="relative flex h-full flex-col overflow-visible rounded-xl bg-white shadow-[0_4px_20px_rgba(0,0,0,0.08)] transition-all duration-300 group-hover:-translate-y-2 group-hover:shadow-[0_12px_40px_rgba(0,0,0,0.15)]">
-                    {/* Colored image area with overflow */}
+                <Link
+                  href={card.href}
+                  className="group relative block"
+                  style={{ textDecoration: "none" }}
+                >
+                  <div
+                    className="relative flex flex-col overflow-y-visible rounded-[10px] border-2 border-[#cacfd6] bg-white transition-transform duration-300 ease-in-out group-hover:scale-105"
+                  >
+                    {/* Colored gradient image area — 270px like original */}
                     <div
-                      className={`relative mx-0 flex h-[260px] items-end justify-center rounded-t-xl ${card.color} ${card.hoverColor} transition-colors duration-300`}
+                      className="relative w-full overflow-y-visible rounded-t-lg"
+                      style={{
+                        background: card.gradient,
+                        height: "270px",
+                      }}
                     >
-                      {/* Product image — overflows above the card */}
-                      <img
-                        src={card.image}
-                        alt={card.title}
-                        className="absolute bottom-0 left-1/2 h-[300px] w-auto max-w-[90%] -translate-x-1/2 object-contain drop-shadow-[0_8px_24px_rgba(0,0,0,0.25)] transition-transform duration-300 group-hover:scale-[1.03]"
-                        style={{ top: "-50px" }}
-                      />
-                      {/* Fallback icon (visible behind/below image as subtle watermark) */}
-                      <card.icon
-                        size={100}
-                        className="absolute bottom-4 right-4 text-white/10"
-                        strokeWidth={1}
-                      />
+                      {/* img-wrap: absolute, top -100px, height calc(100%+100px) */}
+                      <div
+                        className="absolute left-1/2 z-[2] w-full -translate-x-1/2"
+                        style={{
+                          top: "-100px",
+                          maxWidth: "455px",
+                          height: "calc(100% + 100px)",
+                        }}
+                      >
+                        <img
+                          src={card.image}
+                          alt={card.title}
+                          className="h-full w-full object-contain"
+                          style={{ objectPosition: "bottom" }}
+                        />
+                      </div>
                     </div>
 
-                    {/* Card content — centered text */}
-                    <div className="flex flex-1 flex-col items-center px-6 pb-8 pt-8 text-center">
-                      <h3 className="text-base font-extrabold uppercase tracking-[0.15em] text-gray-900">
+                    {/* Card content area — centered, generous padding */}
+                    <div
+                      className="relative text-center"
+                      style={{ padding: "36px 32px 90px" }}
+                    >
+                      {/* Logo placeholder — Venezuela Dental logo */}
+                      <div className="mx-auto mb-5" style={{ maxWidth: "200px" }}>
+                        <img
+                          src="/logo.svg"
+                          alt="Venezuela Dental"
+                          className="mx-auto h-12 w-auto object-contain"
+                        />
+                      </div>
+
+                      <h6
+                        className="mb-2.5 text-lg font-semibold uppercase tracking-wide"
+                        style={{ color: "#001480" }}
+                      >
                         {card.title}
-                      </h3>
-                      <p className="mt-3 max-w-xs text-sm leading-relaxed text-gray-500">
+                      </h6>
+                      <p
+                        className="mb-5 leading-relaxed"
+                        style={{ fontSize: "18px", color: "#545859" }}
+                      >
                         {card.description}
                       </p>
-                      <span className="mt-6 inline-flex items-center rounded-lg border-2 border-blue-DEFAULT px-6 py-2.5 text-sm font-bold text-blue-DEFAULT transition-colors group-hover:bg-blue-DEFAULT group-hover:text-white">
-                        {t.productLines.viewProducts} &rarr;
+
+                      {/* Pill button — absolute bottom like original */}
+                      <span
+                        className="absolute left-1/2 -translate-x-1/2 rounded-full border-2 border-[#0084f2] bg-transparent px-[60px] py-2.5 font-extrabold text-[#0084f2] transition-all duration-300 group-hover:bg-[#0084f2] group-hover:text-white"
+                        style={{ bottom: "36px", whiteSpace: "nowrap" }}
+                      >
+                        {t.productLines.viewProducts}
                       </span>
                     </div>
                   </div>
@@ -195,7 +233,7 @@ export default function Home() {
         </div>
 
         {/* Brand carousel — directly below product line cards */}
-        <div className="mt-20">
+        <div className="mt-16">
           <BrandCarousel embedded />
         </div>
       </section>

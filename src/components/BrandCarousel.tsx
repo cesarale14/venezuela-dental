@@ -28,8 +28,8 @@ export default function BrandCarousel({ embedded }: { embedded?: boolean }) {
       </div>
       <div className="relative mt-8 overflow-hidden">
         {/* Fade edges */}
-        <div className={`pointer-events-none absolute inset-y-0 left-0 z-10 w-20 bg-gradient-to-r ${embedded ? "from-[#f0f9ff]" : "from-gray-50"} to-transparent`} />
-        <div className={`pointer-events-none absolute inset-y-0 right-0 z-10 w-20 bg-gradient-to-l ${embedded ? "from-[#f0f9ff]" : "from-gray-50"} to-transparent`} />
+        <div className={`pointer-events-none absolute inset-y-0 left-0 z-10 w-20 bg-gradient-to-r ${embedded ? "from-[#ebf5fe]" : "from-gray-50"} to-transparent`} />
+        <div className={`pointer-events-none absolute inset-y-0 right-0 z-10 w-20 bg-gradient-to-l ${embedded ? "from-[#ebf5fe]" : "from-gray-50"} to-transparent`} />
 
         {/* Scrolling track */}
         <div className="flex animate-marquee gap-6">
