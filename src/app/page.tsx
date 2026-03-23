@@ -162,16 +162,29 @@ export default function Home() {
                   style={{ textDecoration: "none" }}
                 >
                   <div
-                    className="relative flex flex-col overflow-y-visible rounded-[10px] border-2 border-[#cacfd6] bg-white transition-transform duration-300 ease-in-out group-hover:scale-105"
+                    className="relative flex flex-col overflow-y-visible border-2 border-[#cacfd6] bg-white transition-transform duration-300 ease-in-out group-hover:scale-105"
+                    style={{ borderRadius: "10px" }}
                   >
-                    {/* Colored gradient image area — 270px like original */}
+                    {/* Colored gradient image area — 270px, rounded top only, seamless with content below */}
                     <div
-                      className="relative w-full overflow-y-visible rounded-t-lg"
+                      className="relative w-full overflow-y-visible"
                       style={{
                         background: card.gradient,
                         height: "270px",
+                        borderRadius: "8px 8px 0 0",
                       }}
                     >
+                      {/* White radial glow behind the image */}
+                      <div
+                        className="absolute left-1/2 z-[1] -translate-x-1/2"
+                        style={{
+                          top: "-100px",
+                          maxWidth: "455px",
+                          width: "100%",
+                          height: "calc(100% + 100px)",
+                          background: "radial-gradient(circle, rgba(255,255,255,0.6) 0%, rgba(255,255,255,0.2) 40%, transparent 70%)",
+                        }}
+                      />
                       {/* img-wrap: absolute, top -100px, height calc(100%+100px) */}
                       <div
                         className="absolute left-1/2 z-[2] w-full -translate-x-1/2"
