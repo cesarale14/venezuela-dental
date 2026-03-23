@@ -18,18 +18,18 @@ const brands = [
   { name: "Maquira", logo: "/brands/maquira.svg" },
 ];
 
-export default function BrandCarousel() {
+export default function BrandCarousel({ embedded }: { embedded?: boolean }) {
   const { t } = useLanguage();
 
-  return (
-    <section className="bg-gray-50 py-20 md:py-24">
+  const content = (
+    <>
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <SectionHeading title={t.brands.title} subtitle={t.brands.subtitle} />
       </div>
       <div className="relative mt-8 overflow-hidden">
         {/* Fade edges */}
-        <div className="pointer-events-none absolute inset-y-0 left-0 z-10 w-20 bg-gradient-to-r from-gray-50 to-transparent" />
-        <div className="pointer-events-none absolute inset-y-0 right-0 z-10 w-20 bg-gradient-to-l from-gray-50 to-transparent" />
+        <div className={`pointer-events-none absolute inset-y-0 left-0 z-10 w-20 bg-gradient-to-r ${embedded ? "from-[#f0f9ff]" : "from-gray-50"} to-transparent`} />
+        <div className={`pointer-events-none absolute inset-y-0 right-0 z-10 w-20 bg-gradient-to-l ${embedded ? "from-[#f0f9ff]" : "from-gray-50"} to-transparent`} />
 
         {/* Scrolling track */}
         <div className="flex animate-marquee gap-6">
@@ -48,6 +48,16 @@ export default function BrandCarousel() {
           ))}
         </div>
       </div>
+    </>
+  );
+
+  if (embedded) {
+    return <div>{content}</div>;
+  }
+
+  return (
+    <section className="bg-gray-50 py-20 md:py-24">
+      {content}
     </section>
   );
 }

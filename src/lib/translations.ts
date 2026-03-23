@@ -27,22 +27,19 @@ const translations = {
       pricing: "Precios competitivos",
     },
     productLines: {
-      title: "Nuestras L\u00edneas de Productos",
-      viewProducts: "Ver Productos",
+      title: "Nuestras L\u00edneas",
+      viewProducts: "Ver M\u00e1s",
       line1: {
-        subtitle: "Prevenci\u00f3n y Restaurativa",
-        title: "Suministros Cl\u00ednicos del D\u00eda a D\u00eda",
-        description: "Materiales de consumo para prevenci\u00f3n, control de infecciones, restaurativa y procedimientos cotidianos de consultorio.",
+        title: "SUMINISTROS CL\u00cdNICOS",
+        description: "Materiales de consumo para prevenci\u00f3n, restaurativa, control de infecciones y procedimientos cotidianos.",
       },
       line2: {
-        subtitle: "Especialidades",
-        title: "Soluciones para Especialistas",
-        description: "Productos avanzados para endodoncia, ortodoncia, periodoncia, cirug\u00eda oral y pr\u00f3tesis que requieren experiencia cl\u00ednica especializada.",
+        title: "SOLUCIONES PARA ESPECIALISTAS",
+        description: "Productos avanzados para endodoncia, ortodoncia, periodoncia y cirug\u00eda oral.",
       },
       line3: {
-        subtitle: "Equipamiento",
-        title: "Equipos, Tecnolog\u00eda e Instrumental",
-        description: "Equipos de \u00faltima generaci\u00f3n, instrumental de precisi\u00f3n y tecnolog\u00eda para equipar o renovar su consultorio completo.",
+        title: "EQUIPOS Y TECNOLOG\u00cdA",
+        description: "Equipos de \u00faltima generaci\u00f3n e instrumental de precisi\u00f3n para su consultorio.",
       },
     },
     featured: {
@@ -220,22 +217,19 @@ const translations = {
       pricing: "Competitive pricing",
     },
     productLines: {
-      title: "Our Product Lines",
-      viewProducts: "View Products",
+      title: "Our Lines",
+      viewProducts: "Learn More",
       line1: {
-        subtitle: "Prevention & Restorative",
-        title: "Everyday Clinical Supplies",
-        description: "Chairside consumables for prevention, infection control, restorative and everyday practice procedures.",
+        title: "EVERYDAY CLINICAL SUPPLIES",
+        description: "Chairside consumables for prevention, restorative, infection control and everyday procedures.",
       },
       line2: {
-        subtitle: "Specialties",
-        title: "Solutions for Specialists",
-        description: "Advanced products for endodontics, orthodontics, periodontics, oral surgery and prosthetics requiring specialized clinical expertise.",
+        title: "SOLUTIONS FOR SPECIALISTS",
+        description: "Advanced products for endodontics, orthodontics, periodontics and oral surgery.",
       },
       line3: {
-        subtitle: "Equipment",
-        title: "Equipment, Technology & Instruments",
-        description: "State-of-the-art equipment, precision instruments and technology to equip or renovate your complete practice.",
+        title: "EQUIPMENT & TECHNOLOGY",
+        description: "State-of-the-art equipment and precision instruments for your practice.",
       },
     },
     featured: {

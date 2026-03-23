@@ -13,7 +13,7 @@ import {
   MapPin,
   Stethoscope,
   Microscope,
-  MonitorCog,
+  Monitor,
 } from "lucide-react";
 import { useLanguage } from "@/hooks/useLanguage";
 import { CONTACT, getWhatsAppUrl } from "@/lib/constants";
@@ -112,29 +112,35 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Product Lines */}
-      <section className="bg-gray-50 py-20 md:py-24">
+      {/* Product Lines — Young Innovations style */}
+      <section className="bg-[#f0f9ff] py-20 md:py-28">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <SectionHeading title={t.productLines.title} />
-          <div className="mt-16 grid gap-10 md:grid-cols-3">
+          <div className="mt-20 grid gap-10 sm:grid-cols-2 lg:grid-cols-3">
             {[
               {
                 icon: Stethoscope,
-                subtitle: t.productLines.line1.subtitle,
+                image: "/brands/dental-tools.png",
+                color: "bg-[#7c3aed]",
+                hoverColor: "group-hover:bg-[#8b5cf6]",
                 title: t.productLines.line1.title,
                 description: t.productLines.line1.description,
                 href: "/catalogo?categoria=preventiva",
               },
               {
                 icon: Microscope,
-                subtitle: t.productLines.line2.subtitle,
+                image: "/brands/specialist-hand.jpg",
+                color: "bg-[#ec4899]",
+                hoverColor: "group-hover:bg-[#f472b6]",
                 title: t.productLines.line2.title,
                 description: t.productLines.line2.description,
                 href: "/catalogo?categoria=endodoncia",
               },
               {
-                icon: MonitorCog,
-                subtitle: t.productLines.line3.subtitle,
+                icon: Monitor,
+                image: "/brands/implant-tech.png",
+                color: "bg-[#14b8a6]",
+                hoverColor: "group-hover:bg-[#2dd4bf]",
                 title: t.productLines.line3.title,
                 description: t.productLines.line3.description,
                 href: "/catalogo?categoria=equipos",
@@ -142,34 +148,42 @@ export default function Home() {
             ].map((card, i) => (
               <motion.div
                 key={card.title}
-                initial={{ opacity: 0, y: 24 }}
+                initial={{ opacity: 0, y: 32 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: i * 0.12 }}
+                className="pt-12"
               >
-                <Link href={card.href} className="group block">
-                  <div className="relative rounded-xl bg-white shadow-[0_2px_12px_rgba(0,0,0,0.06)] transition-all duration-300 group-hover:-translate-y-1 group-hover:shadow-[0_8px_30px_rgba(0,0,0,0.10)]">
-                    {/* Floating image area */}
-                    <div className="-mt-8 mx-4 flex h-[200px] items-center justify-center rounded-xl bg-blue-lighter transition-transform duration-300 group-hover:scale-[1.02]">
+                <Link href={card.href} className="group block h-full">
+                  <div className="relative flex h-full flex-col overflow-visible rounded-xl bg-white shadow-[0_4px_20px_rgba(0,0,0,0.08)] transition-all duration-300 group-hover:-translate-y-2 group-hover:shadow-[0_12px_40px_rgba(0,0,0,0.15)]">
+                    {/* Colored image area with overflow */}
+                    <div
+                      className={`relative mx-0 flex h-[260px] items-end justify-center rounded-t-xl ${card.color} ${card.hoverColor} transition-colors duration-300`}
+                    >
+                      {/* Product image — overflows above the card */}
+                      <img
+                        src={card.image}
+                        alt={card.title}
+                        className="absolute bottom-0 left-1/2 h-[300px] w-auto max-w-[90%] -translate-x-1/2 object-contain drop-shadow-[0_8px_24px_rgba(0,0,0,0.25)] transition-transform duration-300 group-hover:scale-[1.03]"
+                        style={{ top: "-50px" }}
+                      />
+                      {/* Fallback icon (visible behind/below image as subtle watermark) */}
                       <card.icon
-                        size={64}
-                        className="text-blue-DEFAULT"
-                        strokeWidth={1.2}
+                        size={100}
+                        className="absolute bottom-4 right-4 text-white/10"
+                        strokeWidth={1}
                       />
                     </div>
 
-                    {/* Card content */}
-                    <div className="px-6 pb-8 pt-6">
-                      <p className="text-xs font-semibold uppercase tracking-widest text-blue-DEFAULT">
-                        {card.subtitle}
-                      </p>
-                      <h3 className="mt-2 text-xl font-bold text-gray-900">
+                    {/* Card content — centered text */}
+                    <div className="flex flex-1 flex-col items-center px-6 pb-8 pt-8 text-center">
+                      <h3 className="text-base font-extrabold uppercase tracking-[0.15em] text-gray-900">
                         {card.title}
                       </h3>
-                      <p className="mt-3 text-sm leading-relaxed text-gray-500">
+                      <p className="mt-3 max-w-xs text-sm leading-relaxed text-gray-500">
                         {card.description}
                       </p>
-                      <span className="mt-6 inline-flex items-center rounded-lg border border-blue-DEFAULT px-5 py-2.5 text-sm font-semibold text-blue-DEFAULT transition-colors group-hover:bg-blue-DEFAULT group-hover:text-white">
+                      <span className="mt-6 inline-flex items-center rounded-lg border-2 border-blue-DEFAULT px-6 py-2.5 text-sm font-bold text-blue-DEFAULT transition-colors group-hover:bg-blue-DEFAULT group-hover:text-white">
                         {t.productLines.viewProducts} &rarr;
                       </span>
                     </div>
@@ -178,6 +192,11 @@ export default function Home() {
               </motion.div>
             ))}
           </div>
+        </div>
+
+        {/* Brand carousel — directly below product line cards */}
+        <div className="mt-20">
+          <BrandCarousel embedded />
         </div>
       </section>
 
@@ -260,9 +279,6 @@ export default function Home() {
           </div>
         </div>
       </section>
-
-      {/* Brand Carousel */}
-      <BrandCarousel />
 
       {/* CTA Banner */}
       <section className="bg-gradient-to-r from-blue-DEFAULT to-blue-dark py-20">
