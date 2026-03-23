@@ -11,6 +11,9 @@ import {
   Users,
   Phone,
   MapPin,
+  Stethoscope,
+  Microscope,
+  MonitorCog,
 } from "lucide-react";
 import { useLanguage } from "@/hooks/useLanguage";
 import { CONTACT, getWhatsAppUrl } from "@/lib/constants";
@@ -106,6 +109,75 @@ export default function Home() {
               </div>
             ))}
           </motion.div>
+        </div>
+      </section>
+
+      {/* Product Lines */}
+      <section className="bg-gray-50 py-20 md:py-24">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+          <SectionHeading title={t.productLines.title} />
+          <div className="mt-16 grid gap-10 md:grid-cols-3">
+            {[
+              {
+                icon: Stethoscope,
+                subtitle: t.productLines.line1.subtitle,
+                title: t.productLines.line1.title,
+                description: t.productLines.line1.description,
+                href: "/catalogo?categoria=preventiva",
+              },
+              {
+                icon: Microscope,
+                subtitle: t.productLines.line2.subtitle,
+                title: t.productLines.line2.title,
+                description: t.productLines.line2.description,
+                href: "/catalogo?categoria=endodoncia",
+              },
+              {
+                icon: MonitorCog,
+                subtitle: t.productLines.line3.subtitle,
+                title: t.productLines.line3.title,
+                description: t.productLines.line3.description,
+                href: "/catalogo?categoria=equipos",
+              },
+            ].map((card, i) => (
+              <motion.div
+                key={card.title}
+                initial={{ opacity: 0, y: 24 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: i * 0.12 }}
+              >
+                <Link href={card.href} className="group block">
+                  <div className="relative rounded-xl bg-white shadow-[0_2px_12px_rgba(0,0,0,0.06)] transition-all duration-300 group-hover:-translate-y-1 group-hover:shadow-[0_8px_30px_rgba(0,0,0,0.10)]">
+                    {/* Floating image area */}
+                    <div className="-mt-8 mx-4 flex h-[200px] items-center justify-center rounded-xl bg-blue-lighter transition-transform duration-300 group-hover:scale-[1.02]">
+                      <card.icon
+                        size={64}
+                        className="text-blue-DEFAULT"
+                        strokeWidth={1.2}
+                      />
+                    </div>
+
+                    {/* Card content */}
+                    <div className="px-6 pb-8 pt-6">
+                      <p className="text-xs font-semibold uppercase tracking-widest text-blue-DEFAULT">
+                        {card.subtitle}
+                      </p>
+                      <h3 className="mt-2 text-xl font-bold text-gray-900">
+                        {card.title}
+                      </h3>
+                      <p className="mt-3 text-sm leading-relaxed text-gray-500">
+                        {card.description}
+                      </p>
+                      <span className="mt-6 inline-flex items-center rounded-lg border border-blue-DEFAULT px-5 py-2.5 text-sm font-semibold text-blue-DEFAULT transition-colors group-hover:bg-blue-DEFAULT group-hover:text-white">
+                        {t.productLines.viewProducts} &rarr;
+                      </span>
+                    </div>
+                  </div>
+                </Link>
+              </motion.div>
+            ))}
+          </div>
         </div>
       </section>
 

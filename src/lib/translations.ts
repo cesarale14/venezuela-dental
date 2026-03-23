@@ -26,6 +26,25 @@ const translations = {
       brands: "Marcas reconocidas",
       pricing: "Precios competitivos",
     },
+    productLines: {
+      title: "Nuestras L\u00edneas de Productos",
+      viewProducts: "Ver Productos",
+      line1: {
+        subtitle: "Prevenci\u00f3n y Restaurativa",
+        title: "Suministros Cl\u00ednicos del D\u00eda a D\u00eda",
+        description: "Materiales de consumo para prevenci\u00f3n, control de infecciones, restaurativa y procedimientos cotidianos de consultorio.",
+      },
+      line2: {
+        subtitle: "Especialidades",
+        title: "Soluciones para Especialistas",
+        description: "Productos avanzados para endodoncia, ortodoncia, periodoncia, cirug\u00eda oral y pr\u00f3tesis que requieren experiencia cl\u00ednica especializada.",
+      },
+      line3: {
+        subtitle: "Equipamiento",
+        title: "Equipos, Tecnolog\u00eda e Instrumental",
+        description: "Equipos de \u00faltima generaci\u00f3n, instrumental de precisi\u00f3n y tecnolog\u00eda para equipar o renovar su consultorio completo.",
+      },
+    },
     featured: {
       title: "Productos Destacados",
       viewAll: "Ver todo el cat\u00e1logo",
@@ -199,6 +218,25 @@ const translations = {
       personalized: "Personalized attention",
       brands: "Recognized brands",
       pricing: "Competitive pricing",
+    },
+    productLines: {
+      title: "Our Product Lines",
+      viewProducts: "View Products",
+      line1: {
+        subtitle: "Prevention & Restorative",
+        title: "Everyday Clinical Supplies",
+        description: "Chairside consumables for prevention, infection control, restorative and everyday practice procedures.",
+      },
+      line2: {
+        subtitle: "Specialties",
+        title: "Solutions for Specialists",
+        description: "Advanced products for endodontics, orthodontics, periodontics, oral surgery and prosthetics requiring specialized clinical expertise.",
+      },
+      line3: {
+        subtitle: "Equipment",
+        title: "Equipment, Technology & Instruments",
+        description: "State-of-the-art equipment, precision instruments and technology to equip or renovate your complete practice.",
+      },
     },
     featured: {
       title: "Featured Products",
